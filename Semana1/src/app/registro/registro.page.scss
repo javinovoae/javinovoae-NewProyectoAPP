@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+
+
+
+//ordenar el tamaño de las casillas
+.mat-mdc-form-field { 
+width: 90%; 
+box-sizing: border-box; 
+}
+//ordenar tamaño del boton
+.mat-mdc-raised-button {
+width: 80%; 
+color: #b84e1d; 
+}
+
+mat-label {
+margin-left: 40px
+}
+
+.titulo-gen{
+color: #220404; 
+font-family: "Walter Turncoat", cursive;
+text-align: center; 
+font-size: 2em; 
+}
+
+.lottie-container {
+  background-color: rgba(255, 255, 255, 0) !important;
+  position: fixed;
+  top: 72%;   
+  right: 10%; 
+  z-index: -2; 
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.contenedor-gen{
+margin-top: 40px;
+max-width: 400px; 
+width: 90%;      
+margin-left: auto;
+margin-right: auto;
+padding: 20px; 
+background-color: rgb(255, 255, 255); 
+border-radius: 8px;    
+border-color:#c07e28;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+text-align: center; 
+
+}
+
+.text-contenedor{
+color:#cc7127
+
+}
+
+.mi-boton-personalizado {
+    --background: rgb(103, 56, 165); 
+    color: white; 
+
+}
+
+.contenedor-formulario{ 
+color:#c96b2d
+}
+
+.icono-iniciosesion {
+font-size: 80px; 
+  width: 80px; 
+  height: 80px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  margin: 0 auto; 
+  color:#705686;
+}
+
+ion-content{
+  --background: url('../../assets/imag/FONDOPOP.jpg') no-repeat center center / cover ;
+}
+
+.linkregistro {
+    color: var(--ion-color-primary, #c53fd1); 
+    font-weight: bold; 
+    text-decoration: underline; 
+    cursor: pointer;
+  }
+
+.mat-mdc-form-field-icon-prefix {
+margin-right: 30px; 
+
+  }

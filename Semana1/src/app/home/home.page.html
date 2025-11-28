@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">
+      Bienvenido {{ username }}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon> </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="contenido-general">
+
+    <ion-grid class="main-menu-grid">
+      <ion-row class="ion-justify-content-center"> 
+        
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3"> 
+        <ion-card class="card" (click)="goToEventos()"> 
+          <div class="card-contenido">
+              <ion-icon name="cart-outline" class="icon-contenedor" ></ion-icon> 
+              <ion-card-title class="titulo-card">Gestión de Ventas</ion-card-title> 
+            </div>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
+          <ion-card class="card" (click)="goToProductos()"> 
+            <div class="card-contenido">
+              <ion-icon name="cube-outline" class="icon-contenedor" ></ion-icon> 
+              <ion-card-title class="titulo-card">Gestión de Productos</ion-card-title> </div>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
+          <ion-card class="card" (click)="goToHistorial()"> 
+            <div class="card-contenido">
+              <ion-icon name="receipt-outline" class="icon-contenedor" ></ion-icon> 
+              <ion-card-title class="titulo-card">Historial</ion-card-title> </div>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

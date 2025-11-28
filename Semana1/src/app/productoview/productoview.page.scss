@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+
+
+.pv-contenedor-botones{
+
+    display: flex; // Habilita Flexbox
+    justify-content: space-between; // Distribuye los ítems con espacio entre ellos
+    align-items: center; // Alinea los ítems verticalmente al centro (por si tienen diferentes alturas)
+    width: 100%; // Asegura que el contenedor ocupe todo el ancho disponible
+    padding: 0 16px; // Añade un poco de padding horizontal si no está dentro de un ion-padding
+    box-sizing: border-box; // Incluye el padding en el ancho total
+
+}
+
+ion-content {
+--background: url('../../assets/imag/FONDOPOP.jpg') no-repeat center center / cover;
+}
+
+.titulo-prin{
+text-align: center;
+color: #7d1cb6; 
+font-family: "Walter Turncoat", cursive;
+font-size: 2em; 
+font-weight: bold; 
+text-transform: uppercase; 
+letter-spacing: 0.1px;
+
+
+}
+
+.sub-prin{
+color: #7751be; 
+text-align: center;
+font-family: "Walter Turncoat", cursive;
+font-size: 1.1em; 
+}
+
+.nombre-prod{
+text-transform: uppercase; 
+color: #df436a;  
+}
+
+.costo-prod{
+color: #7751be; 
+font-family: "Walter Turncoat", cursive;
+font-size: 1em; 
+
+}

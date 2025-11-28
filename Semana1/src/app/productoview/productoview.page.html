@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/evento"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Productos del Inventario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contenedor-gen">
+
+  <ion-card *ngIf="productosInventario.length > 0">
+    <ion-card-header>
+      <ion-card-title class="titulo-prin">Tus Productos Actuales</ion-card-title>
+      <ion-card-subtitle class="sub-prin">Aquí tienes la lista de productos registrados en tu inventario, estos se usaran para las ventas de tu evento</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let producto of productosInventario">
+          <ion-label>
+            <h2 class="nombre-prod">{{ producto.name }}</h2>
+            <p class="costo-prod">Costo: ${{ producto.price | number:'1.2-2' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+<div class="pv-contenedor-botones">
+    <p *ngIf="productosInventario.length === 0">No hay productos en inventario. Añade algunos para empezar.</p>
+    
+    <button mat-raised-button color="accent" (click)="redirigirAInventario()">
+      <mat-icon>edit</mat-icon>
+      Editar Productos
+    </button>
+
+    <div style="height: 15px;"></div>
+
+    <button mat-raised-button color="primary" (click)="aceptarProductos()" [disabled]="productosInventario.length === 0">
+      <mat-icon>shopping_cart</mat-icon>
+      Aceptar Productos
+    </button>
+  </div>
+
+
+</ion-content>

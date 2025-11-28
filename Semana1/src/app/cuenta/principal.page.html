@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">
+      <ion-icon class="icono-user" name="person-circle-sharp"></ion-icon>
+      Bienvenido {{ username }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenedor-general">
+  <div class="form-contenedor">
+    <div class="perfil-header"> <ion-icon class="icono-principal" name="person-sharp"></ion-icon>
+      <h2>Mi perfil</h2>
+    </div>
+
+    <mat-form-field class="casilla" appearance="outline" class="full-width-field">
+      <mat-label class="casilla">Nombre</mat-label>
+      <input matInput type="text" [(ngModel)]="nombre" required>
+    </mat-form-field>
+
+    <mat-form-field class="casilla" appearance="outline" class="full-width-field">
+      <mat-label class="casilla">Apellido</mat-label>
+      <input matInput type="text" [(ngModel)]="apellido" required>
+    </mat-form-field>
+
+    <mat-form-field class="casilla" appearance="outline" class="full-width-field">
+      <mat-label class="casilla">Nivel de Educación</mat-label>
+      <mat-select [(ngModel)]="nivelEducacion" required>
+        <mat-option value="basica">Básica</mat-option>
+        <mat-option value="media">Media</mat-option>
+        <mat-option value="universitaria">Universitaria</mat-option>
+        <mat-option value="posgrado">Posgrado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="casilla" appearance="outline" class="full-width-field">
+      <mat-label class="casilla">Fecha de Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    
+      <mat-form-field class="casilla" appearance="outline" class="full-width-field">
+        <mat-label class="casilla">Dirección (Coordenadas)</mat-label>
+        <input matInput type="text" [value]="direccionDisplay" readonly>
+      </mat-form-field>
+
+      <ion-button expand="block" (click)="obtenerUbicacion()" class="boton-ubicacion">
+        <ion-icon name="locate-outline" slot="start"></ion-icon>
+        Obtener Ubicación Actual
+      </ion-button>
+
+      <div *ngIf="error" class="error-text">
+        <ion-text color="danger">{{ error }}</ion-text>
+      </div>
+    
+    <ion-button class="boton-guardar" (click)="guardarInformacionCuenta()">Guardar</ion-button>
+  </div>
+
+  <div class="lottie-container-1">
+    <lottie-player
+      src="../../assets/animation/lineas.json"
+      speed="1" style="width: 200px; height: 300px;" loop autoplay
+    ></lottie-player>
+  </div>
+  <div class="lottie-container-2">
+    <lottie-player
+      src="../../assets/animation/lineas.json"
+      speed="1" style="width: 200px; height: 300px;" loop autoplay
+    ></lottie-player>
+  </div>
+</ion-content>

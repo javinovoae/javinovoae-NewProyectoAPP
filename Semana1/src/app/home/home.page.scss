@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+
+ion-content {
+--background: url('../../assets/imag/FONDOPOP.jpg') no-repeat center center / cover;
+}
+
+.card {
+    background-image: url('../../assets/imag/post.png'); 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    --background: transparent;              
+    padding-bottom: 90%;      
+    max-width: 240px;         
+    width: 100%;               
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+    transform: translateY(-5px);
+}
+}
+
+
+.titulo-card {
+color: #220404; 
+font-family: "Walter Turncoat", cursive;
+text-align: center; 
+font-size: 2em; 
+}
+
+
+.card-contenido{
+
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;             
+    flex-direction: column;  
+    justify-content: center;  
+    align-items: center;      
+    z-index: 2;              
+}
+
+.icon-contenedor{
+    font-size: 3.5em; 
+    color: #cf821c !important;
+}
+
+.toolbar{
+--background: rgb(240, 158, 64); 
+}
+.titulo{
+    color: rgb(255, 255, 255); 
+    font-size: 1.7em; 
+}
+
+

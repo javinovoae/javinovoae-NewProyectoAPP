@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">
+      <ion-icon class="icono-user" name="person-circle-sharp"></ion-icon>
+      Registrarse
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenedor-general">
+  <div class="contenedor-pag">
+    <div class="contenedor-gen">
+      <mat-icon class="icono-iniciosesion">account_circle</mat-icon>
+      <h2 class="titulo-gen">Crear cuenta</h2>
+
+      <mat-form-field appearance="outline" class="contenedor-formulario">
+        <mat-label class="text-contenedor">Nombre de Usuario</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="Ingrese su usuario"
+          minlength="3"
+          maxlength="8"
+          [(ngModel)]="registerCredentials.username" name="username" (input)="validateUsername()"
+          #usernameInput="ngModel"
+          required >
+        <mat-error *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+          <span *ngIf="usernameInput.hasError('required')">El usuario es requerido.</span>
+          <span *ngIf="usernameInput.hasError('minlength')">Mínimo 3 caracteres.</span>
+          <span *ngIf="usernameInput.hasError('maxlength')">Máximo 8 caracteres.</span>
+          <span *ngIf="usernameError">{{ usernameError }}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="contenedor-formulario">
+        <mat-label class="text-contenedor">Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          placeholder="Ingrese su contraseña"
+          maxlength="4"
+          minlength="4"
+          [(ngModel)]="registerCredentials.password" name="password" (input)="validatePassword()"
+          #passwordInput="ngModel"
+          required >
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+          {{hidePassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+        <mat-error *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+          <span *ngIf="passwordInput.hasError('required')">La contraseña es requerida.</span>
+          <span *ngIf="passwordInput.hasError('minlength')">Mínimo 4 caracteres.</span>
+          <span *ngIf="passwordInput.hasError('maxlength')">Máximo 4 caracteres.</span>
+          <span *ngIf="passwordError">{{ passwordError }}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="contenedor-formulario">
+        <mat-label class="text-contenedor">Repetir Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          [type]="hideRepeatPassword ? 'password' : 'text'"
+          placeholder="Repita su contraseña"
+          maxlength="4"
+          minlength="4"
+          [(ngModel)]="repeatPassword" name="repeatPassword" (input)="validatePasswordMatch()" #repeatPasswordInput="ngModel"
+          required
+        >
+        <mat-icon matSuffix (click)="hideRepeatPassword = !hideRepeatPassword">
+          {{hideRepeatPassword ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+        <mat-error *ngIf="repeatPasswordInput.invalid && (repeatPasswordInput.dirty || repeatPasswordInput.touched)">
+          <span *ngIf="repeatPasswordInput.hasError('required')">Confirme su contraseña.</span>
+          <span *ngIf="repeatPasswordInput.hasError('minlength')">Mínimo 4 caracteres.</span>
+          <span *ngIf="repeatPasswordInput.hasError('maxlength')">Máximo 4 caracteres.</span>
+          <span *ngIf="passwordMismatchError">{{ passwordMismatchError }}</span> </mat-error>
+      </mat-form-field>
+
+
+      <ion-button class="mi-boton-personalizado" (click)="register()" [disabled]="!isFormValid()"> Registrarse
+      </ion-button>
+
+    </div>
+
+    <ion-text color="danger" class="ion-text-center ion-margin-top" *ngIf="globalError">
+      <p>{{ globalError }}</p>
+    </ion-text>
+  </div>
+</ion-content>

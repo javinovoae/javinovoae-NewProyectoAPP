@@ -1,0 +1,46 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "es2020",
+    "lib": [
+      "es2018", 
+      "dom"
+    ],
+    "types": ["jasmine",
+    "@wdio/globals/types", 
+    "@wdio/types/expect-webdriverio"],
+    
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+ "include":["src/**/*.ts", "e2e/specs/principal.e2e.ts"],  
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "cypress/**/*",
+    "node_modules/cypress",
+    "**/*.spec.ts",  
+    "**/*.cy.ts"     
+  ]
+}

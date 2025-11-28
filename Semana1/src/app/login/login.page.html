@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">
+      <mat-icon matPrefix>account_circle</mat-icon> Iniciar Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenedor-general">
+  <div class="contenedor-pag">
+    <div class="contenedor-gen">
+      <mat-icon class="icono-iniciosesion">account_circle</mat-icon>
+      <h2 class="titulo-gen">INICIAR SESIÓN</h2>
+
+      <mat-form-field appearance="outline" class="contenedor-formulario">
+        <mat-label class="text-contenedor">Usuario</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          type="text"
+          required
+          placeholder="Ingrese su usuario"
+          minlength="3"
+          maxlength="8"
+          [(ngModel)]="username"
+          #usernameInput="ngModel"
+        >
+        <mat-error *ngIf="usernameInput.hasError('required') && (usernameInput.dirty || usernameInput.touched)">
+          El usuario es requerido.
+        </mat-error>
+        <mat-error *ngIf="usernameInput.hasError('minlength') && (usernameInput.dirty || usernameInput.touched)">
+          Mínimo 3 caracteres.
+        </mat-error>
+        <mat-error *ngIf="usernameInput.hasError('maxlength') && (usernameInput.dirty || usernameInput.touched)">
+          Máximo 8 caracteres.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="contenedor-formulario">
+        <mat-label class="text-contenedor">Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          required
+          placeholder="Ingrese su contraseña"
+          maxlength="4"
+          minlength="4"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+        >
+        <mat-icon matSuffix (click)="toggleHidePassword()">
+          {{ hidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="passwordInput.hasError('required') && (passwordInput.dirty || passwordInput.touched)">
+          La contraseña es requerida.
+        </mat-error>
+        <mat-error *ngIf="passwordInput.hasError('minlength') && (passwordInput.dirty || passwordInput.touched)">
+          Mínimo 4 caracteres.
+        </mat-error>
+        <mat-error *ngIf="passwordInput.hasError('maxlength') && (passwordInput.dirty || passwordInput.touched)">
+          Máximo 4 caracteres.
+        </mat-error>
+      </mat-form-field>
+
+      <ion-button class="mi-boton-personalizado" (click)="login()" [disabled]="!isFormValid()">
+        Ingresar
+      </ion-button>
+
+      <ion-item class="linkregistro" lines="none">
+        <a (click)="goToRegister()" [ngClass]="{ 'enlace-activo': isRegisterLinkActive() }" [attr.aria-disabled]="!isRegisterLinkActive()">
+          ¿No tienes cuenta? Regístrate aquí.
+        </a>
+      </ion-item>
+    </div>
+
+    <div class="lottie-container">
+      <lottie-player
+        src="../../assets/animation/LAPIZ.json"
+        speed="1"
+        style="width: 300px; height: 200px;"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
+
+    <ion-text color="danger" class="ion-text-center ion-margin-top" *ngIf="globalError">
+      <p>{{ globalError }}</p>
+    </ion-text>
+  </div>
+</ion-content>

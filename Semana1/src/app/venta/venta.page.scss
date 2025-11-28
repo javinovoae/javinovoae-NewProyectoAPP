@@ -1,0 +1,81 @@
+.pv-contenedor-botones{
+
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    padding: 0 16px; 
+    box-sizing: border-box; 
+}
+
+.toolbar{
+--background: rgb(240, 158, 64); 
+}
+.titulo{
+    color: rgb(255, 255, 255); 
+    font-size: 1.7em; 
+}
+
+ion-content{
+  --background: url('../../assets/imag/FONDOPOP.jpg') no-repeat center center / cover ;
+}
+.subtitulo{
+font-family: "Walter Turncoat", cursive;
+text-align: center; 
+font-size: 2.4em; 
+color: rgb(206, 59, 219); 
+}
+
+.nombre-evento{
+font-family: "Walter Turncoat", cursive;
+font-size: 1.8em; 
+color: rgb(238, 111, 38); 
+}
+
+.fecha-evento{
+font-family: "Walter Turncoat", cursive;
+font-size: 1em; 
+color: rgb(233, 170, 88); 
+}
+.detalle-text{
+font-family: "Walter Turncoat", cursive;
+text-align: center; 
+font-size: 2.2em; 
+color: rgb(206, 59, 219);
+
+}
+.prod-text{
+font-family: "Walter Turncoat", cursive;
+font-size: 1.8em; 
+color: rgb(238, 111, 38); 
+
+}
+
+.nombre-prod{
+font-family: "Walter Turncoat", cursive;
+font-size: 1.3em; 
+color: rgb(206, 129, 40);
+}
+
+.cantidad{
+font-family: "Walter Turncoat", cursive;
+font-size: 1em; 
+color: rgb(141, 73, 27);
+
+}
+.venta{
+font-family: "Walter Turncoat", cursive;
+font-size: 1em; 
+color:  rgb(241, 78, 220); 
+
+}
+.boton1{
+    --background: rgb(241, 78, 220); 
+    color: white; 
+
+}
+.boton2{
+    --background: rgb(89, 57, 231); 
+    color: white; 
+
+}

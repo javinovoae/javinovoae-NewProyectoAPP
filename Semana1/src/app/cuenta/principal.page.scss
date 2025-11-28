@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+
+//ordenar el tamaño de las casillas
+    .mat-mdc-form-field { 
+    width: 80%; 
+    box-sizing: border-box; 
+
+}
+
+//ordenar tamaño del boton
+    .mat-mdc-raised-button {
+    width: 40%; 
+    font-family: "Walter Turncoat", cursive;
+}
+
+h2 {
+    text-align: center;
+    color:rgb(109, 64, 168);
+    font-family: "Walter Turncoat", cursive;
+    font-size: 2em; 
+    text-transform: uppercase; 
+    letter-spacing: 0.1px; 
+}
+
+.casilla{
+color: #ce7b0e;
+margin-bottom: 2px;
+}
+.contenedor-general{
+    --background: url('../../assets/imag/FONDOPOP.jpg') no-repeat center center / cover;
+    z-index: -1; 
+    min-height: 100vh;
+    overflow: hidden; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 5px 0;
+
+}
+
+.form-contenedor {
+    margin-top: 3px;
+    display: flex;            
+    flex-direction: column;     
+    justify-content: flex-start; 
+    align-items: center;     
+    max-width: 400px; 
+    width: 100%;       
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px; 
+    background-color: rgb(255, 255, 255); 
+    border-radius: 5px;    
+    border-color:#c07e28;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+.icono-principal{
+    font-size: 20px;
+    color:rgb(109, 64, 168)
+}
+
+.boton-guardar{
+    --background: rgb(109, 64, 168); 
+    color: white;    
+}
+
+.boton-direccion{
+    --background: rgb(109, 64, 168); 
+    color: white;    
+} 
+.calendario{
+background: rgb(109, 64, 168); 
+}
+
+.lottie-container-1 {
+    background-color: rgba(255, 255, 255, 0) !important;
+    position: fixed;
+    top: 433px;   
+    left: 680px; 
+    pointer-events: none;
+    overflow: hidden;
+
+}
+
+.lottie-container-2 {
+    background-color: rgba(255, 255, 255, 0) !important;
+    position: fixed;
+    top: 433px;   
+    left: 630px; 
+    pointer-events: none;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+
+.toolbar{
+--background: rgb(240, 158, 64); 
+}
+.titulo{
+    color: rgb(255, 255, 255); 
+    font-size: 1.7em; 
+}

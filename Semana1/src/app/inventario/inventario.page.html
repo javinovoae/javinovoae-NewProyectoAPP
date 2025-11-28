@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Gestión de Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contenedor-gen">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-prod"><ion-icon name="add-circle"></ion-icon>Añadir Nuevo Producto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="guardarProducto()" #f="ngForm">
+
+        <mat-form-field appearance="fill" class="full-width-input">
+          <mat-label >Nombre del Producto</mat-label>
+          <input
+            matInput
+            [(ngModel)]="nombreProducto"
+            name="nombreProducto"
+            placeholder="Ej. Camiseta Algodón"
+            required
+            #nombreInput="ngModel">
+          <mat-error *ngIf="nombreInput.invalid && (nombreInput.dirty || nombreInput.touched)">
+            El nombre del producto es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-prod">
+          <mat-label>Costo</mat-label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="costoProducto"
+            name="costoProducto"
+            placeholder="Ej. 15000"
+            required
+            min="0"
+            #costoInput="ngModel">
+          <mat-error *ngIf="costoInput.invalid && (costoInput.dirty || costoInput.touched)">
+            Ingrese un costo válido (mayor o igual a 0).
+          </mat-error>
+        </mat-form-field>
+
+        <ion-button class="mi-boton-personalizado" type="submit" [disabled]="f.invalid">
+          Guardar Producto
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="productosGuardados.length > 0">
+    <ion-card-header>
+      
+      <ion-card-title class="titulo-invent"><ion-icon name="checkmark-circle"></ion-icon>Productos en Inventario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let producto of productosGuardados; let i = index">
+          <ion-label>
+            <h2 class="name-prod">{{ producto.name }}</h2>
+            <p>Costo: ${{ producto.price | number:'1.0-0' }}</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="danger" (click)="eliminarProducto(producto.id)">
+            <ion-icon class="button-delete"name="trash"></ion-icon>  </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="productosGuardados.length === 0">
+
+  <div class="ion-padding">
+    <ion-button expand="block" routerLink="/tabs/productoview">
+      Productos seleccionados
+    </ion-button>
+  </div>
+
+    <ion-card-content>
+      <p>Aún no hay productos en tu inventario.</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+

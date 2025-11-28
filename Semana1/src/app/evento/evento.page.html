@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Crear Nuevo Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-contenedor"> 
+    <h2 class="titulo-gen"> Información del Evento </h2>
+
+    <mat-form-field appearance="outline" class="contenedor-formulario"> 
+      <mat-label class="texto-contenedor" >Nombre del Evento </mat-label>
+      <mat-icon matPrefix>event</mat-icon>
+      <input matInput type="text" [(ngModel)]="nombreEvento" required  placeholder="Ingrese un evento">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="contenedor-formulario">
+      <mat-label class="texto-contenedor" >Fecha del Evento</mat-label>
+      <mat-icon matPrefix>event</mat-icon>
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="fechaEvento" required placeholder="Ingrese una fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="lottie-container">
+    <lottie-player
+      src="../../assets/animation/fondo.json"   speed="1" style="height: 2000px;" loop  autoplay   ></lottie-player>
+  </div>
+  
+    <ion-button  class="boton-siguiente" (click)="guardarInformacionEvento()">Siguiente</ion-button>
+  </div> 
+</ion-content>

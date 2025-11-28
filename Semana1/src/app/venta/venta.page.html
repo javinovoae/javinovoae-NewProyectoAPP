@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Venta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="ventaForm">
+
+    <ion-card class="ion-margin-bottom">
+      <ion-card-header>
+        <ion-card-subtitle class="subtitulo">Evento Actual</ion-card-subtitle>
+        <ion-card-title class="nombre-evento">{{ nombreEvento }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="fecha-evento">Fecha del evento: <strong>{{ fechaEvento }}</strong></p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="ion-margin-vertical">
+      <ion-card-header>
+        <ion-card-title class="prod-text">Productos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list [formArrayName]="'productos'">
+          <ion-item *ngFor="let productoControl of getProductosFormArray().controls; let i = index" [formGroupName]="i">
+            <ion-label>
+              <h2 class="nombre-prod">{{ productoControl.get('nombre')?.value }}</h2>
+              <p class="cantidad">Costo unitario: ${{ productoControl.get('costo')?.value | number:'1.0-0' }}</p>
+            </ion-label>
+            <mat-form-field appearance="fill" class="cantidad-input">
+              <mat-label>Cantidad</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="cantidad"
+                (input)="onCantidadChange(i)"
+                min="0"> <mat-error *ngIf="productoControl.get('cantidad')?.invalid && productoControl.get('cantidad')?.touched">
+              </mat-error>
+            </mat-form-field>
+            <div class="venta">
+              Total: ${{ productoControl.get('subtotal')?.value | number:'1.0-0' }}
+            </div>
+          </ion-item>
+        </ion-list>
+        <div *ngIf="productosParaVenta.length === 0" class="ion-text-center ion-padding">
+          <p>No hay productos cargados para la venta. Vuelve a seleccionar productos.</p>
+          <button mat-flat-button color="primary" [routerLink]="['/seleccionar-productos']">
+            Ir a Selección de Productos
+          </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="ion-margin-vertical">
+      <ion-card-header>
+        <ion-card-title class="prod-text">Detalle de Pago</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <mat-form-field appearance="fill" class="full-width-input">
+          <mat-label class="total-venta">Monto Total a Pagar</mat-label>
+          <input class="total-venta" matInput formControlName="totalVenta" readonly>
+        </mat-form-field>
+        <div class="pv-contenedor-botones">
+
+          <ion-button  class="boton1" (click)="redirigirHistorial()">
+          <mat-icon>receipt_long</mat-icon> Historial de Ventas
+        </ion-button>
+        <ion-button class="boton2" (click)="realizarPago()">
+          <mat-icon>save</mat-icon> Registrar Venta
+        </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </form>
+</ion-content>

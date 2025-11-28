@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Historial de Ventas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ nombreEvento }}</ion-card-title>
+      <ion-card-subtitle>{{ fechaEvento }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label class="ion-text-wrap">Total de Ventas del Evento:</ion-label>
+        <ion-text color="success">
+          <h2>${{ totalGeneralVentas | number:'1.2-2' }}</h2>
+        </ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="historialVentas.length > 0; else noTicketsMessage">
+    <ion-list-header>
+      <ion-label class="detalle-text">Detalle de todas las Ventas (Tickets)</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let ticket of historialVentas; let i = index">
+      <ion-card-header>
+        <ion-card-title>Ticket #{{ ticket.id }}</ion-card-title>
+        <ion-card-subtitle>Fecha: {{ ticket.sale_date | date:'short' }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Total del Ticket:</ion-label>
+          <ion-text color="success">
+            <h2>${{ ticket.price_ticket | number:'1.2-2' }}</h2>
+          </ion-text>
+        </ion-item>
+
+        <ion-list *ngIf="ticket.ticket_items && ticket.ticket_items.length > 0; else noItemsMessage">
+          <ion-list-header>
+            <ion-label>Productos:</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let item of ticket.ticket_items">
+            <ion-label>
+            {{ item.cantidad_prod_ticket }} x {{ item.product_obj_ticket.name || 'Producto Desconocido' }}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ng-template #noItemsMessage>
+          <ion-item>
+            <ion-label class="ion-text-center">No hay productos asociados a este ticket.</ion-label>
+          </ion-item>
+        </ng-template>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #noTicketsMessage>
+    <ion-item>
+      <ion-label class="ion-text-center">No hay tickets registrados para este evento y usuario.</ion-label>
+    </ion-item>
+  </ng-template>
+
+</ion-content>
