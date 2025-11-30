@@ -2,3 +2,5 @@ selenium
 pytest
 fastapi
 uvicorn
+sqlalchemy
+python-multipart
