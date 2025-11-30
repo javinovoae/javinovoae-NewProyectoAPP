@@ -20,8 +20,8 @@ Base.metadata.create_all(bind=engine)
 # --- Configuración de CORS ---
 origins = [
     "http://localhost",
-    "http://localhost:8100",  
-    "http://127.0.0.1:8100",  
+    "http://localhost:8000",  
+    "http://127.0.0.1:8000",  
     "capacitor://localhost",   
     "ionic://localhost",      
     "http://localhost:4200",  
